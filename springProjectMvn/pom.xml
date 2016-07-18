@@ -5,19 +5,23 @@
 	<artifactId>springProjectMvn</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
+	
+	<!-- 라이브러리 버전업시 빠르게 하고 중복제거하기위해 -->
+	<properties>
+		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.3.1.RELEASE</version>
+			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.2.5.RELEASE</version>
+			<version>${org.springframework.version}</version>
 		</dependency>
-
 
 
 		<!-- logback-classic 만 추가해도 의존된 logback-core도 자동 추가됨 -->
@@ -78,6 +82,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
+		<!-- junit annotaion import를 위한 클래스들이 들어있다. -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -123,7 +128,7 @@
 				<configuration>
 					<!-- 클래스파일 소스볼수있게 다운로드해준다. -->
 					<downloadSources>true</downloadSources>
-					<wtpversion>2.0</wtpversion>
+					<wtpversion>2.0</wtpversion><!-- wtp 플러그인에 배포가 가능한 상태로 설정변경-->
 					<wtpContextName>/</wtpContextName> <!-- 웹 어플리케이션 접근시 context path 네임 설정 -->
 				</configuration>
 			</plugin>
