@@ -1,0 +1,6 @@
+/application-properties.xml
+/applicationContext.xml
+/com/
+/logback.xml
+/messages.properties
+/mybatis-config.xml
