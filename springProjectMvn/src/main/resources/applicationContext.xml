@@ -61,7 +61,9 @@
 	<!-- 트랜잭션처리를 어노테이션기반으로 트랜잭션처리가 가능하도록 하기 위해 tx추가 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<!-- 아래처럼 빈등록 선언하지 않으면 해당 빈에서 @Repository 선언해주면됨. -->
+	<!-- 자동으로 클래스 이름 기준으로 생성됨을 알수 있고 @Respository(name="odarkDao") 로 선언하면 @Resource(name="odarkDao")로 @Autowired 또는 @Inject하지 
+	않아도 주입이 가능하다. -->
 	<!-- <bean id="userDao" class="com.odark.dao.users.UserDao" /> -->
-	<bean id="userDao" class="com.odark.dao.users.UserDao" />
 
 </beans>

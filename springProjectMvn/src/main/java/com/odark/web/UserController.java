@@ -2,6 +2,7 @@ package com.odark.web;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,6 +27,9 @@ public class UserController {
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
+	/*아래처럼 MyBatisUserDao는 별도로 bean id등록을 xml에 추가해주지 않았는데 자동으로 클래스 이름 기준으로 생성됨을 알수 있고
+	이 이름마저 변경하고 싶다면 MyBatisUserDao 클래스 @Repository(name="userDao") 이렇게 이름을 선언을 해줘서 userDao이름으로 inject해줄수도 있다.
+	@Resource(name="myBatisUserDao")*/
 	private IUserDao userDao;
 	
 	@RequestMapping("/form")
