@@ -35,13 +35,13 @@
   <c:choose>
   <c:when test="${empty user.userId}">
 	<form:input path="userId" />
-	<form:errors path="userId" cssClass="error" />
   </c:when>
   <c:otherwise>
   	${user.userId}
   	<form:hidden path="userId"/>
   </c:otherwise>
   </c:choose>
+  <form:errors path="userId" cssClass="error" />
  <tr>
   <td>비밀번호
   <td><form:password path="password" />

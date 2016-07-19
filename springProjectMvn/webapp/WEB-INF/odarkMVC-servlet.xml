@@ -30,6 +30,10 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsp/" 
 		p:suffix=".jsp" />
+		
+	<!-- 에러메시지를 보여주기 위해 properties을 읽어들이기 위한 설정을 추가해줘한다. -->	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+	p:basename="messages" p:defaultEncoding="UTF-8" />		
 
 
 </beans>

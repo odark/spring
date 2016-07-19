@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-	<display-name>springProjectForMvc</display-name>
+	<display-name>springProjectMvn</display-name>
 	<!-- controller에서 주입해서 쓸수있게 여러 dao를 셋팅해서 가지고있는 applicationContext.xml를 로딩하도록 함 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

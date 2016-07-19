@@ -1,6 +1,7 @@
 package com.odark.web;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,7 @@ import com.odark.domain.users.User;
 
 @Controller
 @RequestMapping("/user")
+
 public class UserController {
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
@@ -31,6 +34,9 @@ public class UserController {
 	이 이름마저 변경하고 싶다면 MyBatisUserDao 클래스 @Repository(name="userDao") 이렇게 이름을 선언을 해줘서 userDao이름으로 inject해줄수도 있다.
 	@Resource(name="myBatisUserDao")*/
 	private IUserDao userDao;
+	
+	@Resource(name="messageSource")
+	private MessageSource messageSource;
 	
 	@RequestMapping("/form")
 	public String createForm(Model model){
@@ -42,7 +48,8 @@ public class UserController {
 	public String create(@Valid User user, BindingResult bindingResult){
 		log.debug("User : {}", user);
 		if(bindingResult.hasErrors()){
-			log.debug("Binding Result has error!");
+			log.debug("Binding Result has error! {},{}",bindingResult.getFieldError(),messageSource.getMessage(bindingResult.getFieldError(),Locale.KOREAN));
+			log.debug("Locale {}",Locale.getDefault());
 			List<ObjectError> errors =bindingResult.getAllErrors();
 			for (ObjectError error: errors){
 				log.debug("error : {}, {}", error.getCode(),error.getDefaultMessage());
@@ -110,7 +117,8 @@ public class UserController {
 		User user = userDao.findById(authenicate.getUserId());
 		if(user == null) {
 			// TODO 에러처리 - 존재하지 않는 사용자 입니다.
-			model.addAttribute("errorMessage","존재하지 않는 사용자 입니다.");
+			//model.addAttribute("errorMessage","존재하지 않는 사용자 입니다.");
+			model.addAttribute("errorMessage",messageSource.getMessage("User.userId.mismatch", null, Locale.KOREAN));
 			return "users/login";
 			
 		}

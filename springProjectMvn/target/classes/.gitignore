@@ -3,4 +3,5 @@
 /com/
 /logback.xml
 /messages.properties
+/messages_ko.properties
 /mybatis-config.xml
