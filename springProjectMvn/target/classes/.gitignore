@@ -3,5 +3,6 @@
 /com/
 /logback.xml
 /messages.properties
+/messages_en.properties
 /messages_ko.properties
 /mybatis-config.xml

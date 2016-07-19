@@ -117,7 +117,7 @@ public class UserController {
 		User user = userDao.findById(authenicate.getUserId());
 		if(user == null) {
 			// TODO 에러처리 - 존재하지 않는 사용자 입니다.
-			//model.addAttribute("errorMessage","존재하지 않는 사용자 입니다.");
+//			model.addAttribute("errorMessage","존재하지 않는 사용자 입니다.");
 			model.addAttribute("errorMessage",messageSource.getMessage("User.userId.mismatch", null, Locale.KOREAN));
 			return "users/login";
 			
